@@ -1,15 +1,33 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <div className="navbar bg-[#15151580] text-white fixed z-10 px-8">
+        <div className="navbar bg-[#15151580] text-white fixed z-10 px-8 py-4">
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <Link to={'/'} className="btn btn-ghost normal-case text-xl">
+                    BISTRO BOSS
+                    <br />
+                    RESTAURANT
+                </Link>
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a>Item 1</a></li>
-                    <li><a>Item 3</a></li>
+                    <li>
+                        <Link className='uppercase' to={'/'}>Home</Link>
+                    </li>
+                    <li>
+                        <Link className='uppercase' to={'/contact'}>contact us</Link>
+                    </li>
+                    <li>
+                        <Link className='uppercase' to={'/dashboard'}>dash board</Link>
+                    </li>
+                    <li>
+                        <Link className='uppercase' to={'/menu'}>Our menu</Link>
+                    </li>
+                    <li>
+                        <Link className='uppercase' to={'/shop'}>our shop</Link>
+                    </li>
                 </ul>
 
                 <div className="dropdown dropdown-end">
