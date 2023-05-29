@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MenuItem from './MenuItem';
 
-const Menu = ({ category }) => {
+const CommonMenu = ({ category, button }) => {
 
     const [menu, setMenu] = useState([]);
 
@@ -23,11 +23,11 @@ const Menu = ({ category }) => {
             </div>
             <div className='flex justify-center mt-12'>
                 <button className="btn btn-outline border-0 border-b-2 hover:bg-transparent hover:text-black">
-                    view full menu
+                    {button? button : 'ORDER YOUR FAVOURITE FOOD'}
                 </button>
             </div>
         </div>
     );
 };
 
-export default Menu;
+export default CommonMenu;

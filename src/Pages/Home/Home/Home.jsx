@@ -2,11 +2,11 @@ import React from 'react';
 import Banner from '../Banner/Banner';
 import SectionTitle from '../../../components/SectionTitle';
 import Category from '../Category/Category';
-import Menu from '../../../components/Menu/Menu';
 import FoodCards from '../../../components/FoodCards/FoodCards';
 import FeatureBanner from '../FeatureBanner/FeatureBanner';
 import Reviews from '../Reviews/Reviews';
 import { Helmet } from 'react-helmet-async';
+import CommonMenu from '../../../components/CommonMenu/CommonMenu';
 
 const Home = () => {
     return (
@@ -32,9 +32,10 @@ const Home = () => {
                 subHeading={'Check it Out'}
                 heading={'from out menu'}
             ></SectionTitle>
-            <Menu
+            <CommonMenu
                 category={'popular'}
-            ></Menu>
+                button={'View full menu'}
+            ></CommonMenu>
             <div className='my-14 bg-[#151515] custom-container text-center py-12 rounded'>
                 <h3 className='text-white text-3xl'>Call Us: +880 162 463 2302</h3>
             </div>
