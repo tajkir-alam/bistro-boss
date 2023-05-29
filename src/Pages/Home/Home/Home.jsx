@@ -5,6 +5,7 @@ import Category from '../Category/Category';
 import Menu from '../../../components/Menu/Menu';
 import FoodCards from '../../../components/FoodCards/FoodCards';
 import FeatureBanner from '../FeatureBanner/FeatureBanner';
+import Reviews from '../Reviews/Reviews';
 
 const Home = () => {
     return (
@@ -45,6 +46,7 @@ const Home = () => {
                 subHeading={'What Our Client Say'}
                 heading={'TESTIMONIALS'}
             ></SectionTitle>
+            <Reviews></Reviews>
         </div>
     );
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 
 const MenuCards = ({ item }) => {
-    console.log(item);
     const { image, name, price, recipe } = item;
     return (
         <div className="card bg-[#F3F3F3] shadow-xl">
