@@ -1,7 +1,6 @@
 import React from 'react';
 
 const MenuItem = ({ item }) => {
-    console.log(item);
     const { image, name, price, recipe } = item;
     return (
         <div className='grid grid-cols-5 gap-4'>

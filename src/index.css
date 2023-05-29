@@ -4,6 +4,6 @@
 
 @layer components {
     .custom-container {
-        @apply px-2 mt-2 lg:w-4/5 lg:mx-auto
+        @apply mx-2 mt-2 lg:w-4/5 lg:mx-auto
     }
 }

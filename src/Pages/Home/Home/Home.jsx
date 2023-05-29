@@ -3,6 +3,7 @@ import Banner from '../Banner/Banner';
 import SectionTitle from '../../../components/SectionTitle';
 import Category from '../Category/Category';
 import Menu from '../../../components/Menu/Menu';
+import FoodCards from '../../../components/FoodCards/FoodCards';
 
 const Home = () => {
     return (
@@ -28,6 +29,16 @@ const Home = () => {
             <Menu
                 category={'popular'}
             ></Menu>
+            <div className='my-14 bg-[#151515] custom-container text-center py-12 rounded'>
+                <h3 className='text-white text-3xl'>Call Us: +880 162 463 2302</h3>
+            </div>
+            <SectionTitle
+                subHeading={'Should Try'}
+                heading={'CHEF RECOMMENDS'}
+            ></SectionTitle>
+            <FoodCards
+                category={'offered'}
+            ></FoodCards>
         </div>
     );
 };
