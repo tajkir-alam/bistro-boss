@@ -4,6 +4,7 @@ import SectionTitle from '../../../components/SectionTitle';
 import Category from '../Category/Category';
 import Menu from '../../../components/Menu/Menu';
 import FoodCards from '../../../components/FoodCards/FoodCards';
+import FeatureBanner from '../FeatureBanner/FeatureBanner';
 
 const Home = () => {
     return (
@@ -39,6 +40,11 @@ const Home = () => {
             <FoodCards
                 category={'offered'}
             ></FoodCards>
+            <FeatureBanner></FeatureBanner>
+            <SectionTitle
+                subHeading={'What Our Client Say'}
+                heading={'TESTIMONIALS'}
+            ></SectionTitle>
         </div>
     );
 };
