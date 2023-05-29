@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import MenuItem from './MenuItem';
+import useMenu from '../../hooks/useMenu';
 
-const CommonMenu = ({ category, button }) => {
+const CommonMenu = ({ SectionImg, button }) => {
 
-    const [menu, setMenu] = useState([]);
-
-    useEffect(() => {
-        fetch('menu.json')
-            .then(res => res.json())
-            .then(data => {
-                const items = data.filter(item => item.category === category);
-                setMenu(items);
-            })
-    }, [])
+    const [menu] = useMenu(SectionImg)
 
     return (
         <div>
@@ -23,7 +15,7 @@ const CommonMenu = ({ category, button }) => {
             </div>
             <div className='flex justify-center mt-12'>
                 <button className="btn btn-outline border-0 border-b-2 hover:bg-transparent hover:text-black">
-                    {button? button : 'ORDER YOUR FAVOURITE FOOD'}
+                    {button ? button : 'ORDER YOUR FAVOURITE FOOD'}
                 </button>
             </div>
         </div>

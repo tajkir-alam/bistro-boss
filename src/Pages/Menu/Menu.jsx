@@ -23,13 +23,41 @@ const Menu = () => {
                 heading={"Today's offer"}
             ></SectionTitle>
             <CommonMenu
-                category={'popular'}
+                SectionImg={'offered'}
             ></CommonMenu>
+
             <SectionImg
                 img={desert}
                 title={'Deserts'}
                 subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
             ></SectionImg>
+            <CommonMenu
+                SectionImg={'dessert'}
+            ></CommonMenu>
+            <SectionImg
+                img={desert}
+                title={'pizza'}
+                subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
+            ></SectionImg>
+            <CommonMenu
+                SectionImg={'pizza'}
+            ></CommonMenu>
+            <SectionImg
+                img={desert}
+                title={'soup'}
+                subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
+            ></SectionImg>
+            <CommonMenu
+                SectionImg={'soup'}
+            ></CommonMenu>
+            <SectionImg
+                img={desert}
+                title={'salad'}
+                subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
+            ></SectionImg>
+            <CommonMenu
+                SectionImg={'salad'}
+            ></CommonMenu>
         </div>
     );
 };

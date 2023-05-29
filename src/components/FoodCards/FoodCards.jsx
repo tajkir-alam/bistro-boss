@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import MenuCards from './MenuCards';
+import useMenu from '../../hooks/useMenu';
 
-const FoodCards = ({category}) => {
-    const [menu, setMenu] = useState([]);
+const FoodCards = () => {
 
-    useEffect(() => {
-        fetch('menu.json')
-            .then(res => res.json())
-            .then(data => {
-                const items = data.filter(item => item.category === category);
-                setMenu(items);
-            })
-    }, [])
+    const [menu] = useMenu('popular')
+
     return (
         <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-4 custom-container'>
             {

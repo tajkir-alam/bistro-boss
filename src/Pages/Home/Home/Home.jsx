@@ -33,8 +33,8 @@ const Home = () => {
                 heading={'from out menu'}
             ></SectionTitle>
             <CommonMenu
-                category={'popular'}
                 button={'View full menu'}
+                SectionImg={'popular'}
             ></CommonMenu>
             <div className='my-14 bg-[#151515] custom-container text-center py-12 rounded'>
                 <h3 className='text-white text-3xl'>Call Us: +880 162 463 2302</h3>
