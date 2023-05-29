@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from '../Banner/Banner';
 import SectionTitle from '../../../components/SectionTitle';
 import Category from '../Category/Category';
+import Menu from '../../../components/Menu/Menu';
 
 const Home = () => {
     return (
@@ -24,6 +25,9 @@ const Home = () => {
                 subHeading={'Check it Out'}
                 heading={'from out menu'}
             ></SectionTitle>
+            <Menu
+                category={'popular'}
+            ></Menu>
         </div>
     );
 };
