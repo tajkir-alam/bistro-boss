@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'chef-service': "url('./src/assets/home/chef-service.jpg')"
+      },
+    },
   },
   plugins: [require("daisyui")],
 }

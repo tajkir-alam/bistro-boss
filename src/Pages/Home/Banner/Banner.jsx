@@ -11,27 +11,27 @@ import img6 from '../../../assets/home/06.png'
 const Banner = () => {
     return (
         <Carousel autoPlay={true} className='text-center'>
-            <div className='h-[calc(100vh-150px)]'>
+            <div className='lg:h-[calc(100vh-150px)]'>
                 <div className='bg-black bg-opacity-50 absolute h-full w-full'></div>
                 <img src={img1} />
             </div>
-            <div className='h-[calc(100vh-150px)]'>
+            <div className='lg:h-[calc(100vh-150px)]'>
                 <div className='bg-black bg-opacity-50 absolute h-full w-full'></div>
                 <img src={img2} />
             </div>
-            <div className='h-[calc(100vh-150px)]'>
+            <div className='lg:h-[calc(100vh-150px)]'>
                 <div className='bg-black bg-opacity-50 absolute h-full w-full'></div>
                 <img src={img3} />
             </div>
-            <div className='h-[calc(100vh-150px)]'>
+            <div className='lg:h-[calc(100vh-150px)]'>
                 <div className='bg-black bg-opacity-50 absolute h-full w-full'></div>
                 <img src={img4} />
             </div>
-            <div className='h-[calc(100vh-150px)]'>
+            <div className='lg:h-[calc(100vh-150px)]'>
                 <div className='bg-black bg-opacity-50 absolute h-full w-full'></div>
                 <img src={img5} />
             </div>
-            <div className='h-[calc(100vh-150px)]'>
+            <div className='lg:h-[calc(100vh-150px)]'>
                 <div className='bg-black bg-opacity-50 absolute h-full w-full'></div>
                 <img src={img6} />
             </div>
