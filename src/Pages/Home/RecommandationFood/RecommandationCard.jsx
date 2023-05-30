@@ -3,7 +3,7 @@ import React from 'react';
 const RecommandationCard = ({ item }) => {
     const { image, name, recipe } = item;
     return (
-        <div className="card bg-[#F3F3F3] shadow-xl">
+        <div className="card rounded-none bg-[#F3F3F3] shadow-xl">
             <figure><img src={image} alt="Shoes" /></figure>
             <div className="card-body text-center">
                 <h2 className="card-title justify-center">{name}</h2>

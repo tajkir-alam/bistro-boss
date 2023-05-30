@@ -15,7 +15,7 @@ const Reviews = () => {
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
-    console.log(reviews);
+    
     return (
         <div className='custom-container'>
             <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
