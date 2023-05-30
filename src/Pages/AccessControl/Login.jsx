@@ -64,7 +64,7 @@ const Login = () => {
 
                         <div className="text-center mt-8 text-[#D1A054] font-semibold space-y-4">
                             <h4>Already registered? <Link to={'/signup'} className='font-bold'>Go to sign up</Link></h4>
-                            <h5 className='text-[#444444]'>Or sign up with</h5>
+                            <h5 className='text-[#444444]'>Or sign in with</h5>
                             <div className='flex gap-4 justify-center items-center'>
                                 <FaFacebookF className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer'></FaFacebookF>
                                 <FaGoogle className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer'></FaGoogle>
