@@ -42,9 +42,9 @@ const Signup = () => {
                             <h4>Already registered? <Link to={'/login'} className='font-bold'>Go to log in</Link></h4>
                             <h5 className='text-[#444444]'>Or sign up with</h5>
                             <div className='flex gap-4 justify-center items-center'>
-                                <FaFacebookF className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer'></FaFacebookF>
-                                <FaGoogle className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer'></FaGoogle>
-                                <FaGithub className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer'></FaGithub>
+                                <FaFacebookF className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer hover:bg-[#444444] hover:text-white duration-500'></FaFacebookF>
+                                <FaGoogle className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer hover:bg-[#444444] hover:text-white duration-500'></FaGoogle>
+                                <FaGithub className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer hover:bg-[#444444] hover:text-white duration-500'></FaGithub>
                             </div>
                         </div>
                     </div>
