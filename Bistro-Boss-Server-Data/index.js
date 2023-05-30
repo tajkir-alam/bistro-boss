@@ -37,7 +37,7 @@ async function run() {
 
         app.get('/menu', async (req, res) => {
             const cursor = menuCollection.find();
-            const result = cursor.toArray();
+            const result = await cursor.toArray();
             res.send(result)
         })
 
