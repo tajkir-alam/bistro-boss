@@ -27,6 +27,7 @@ const Menu = () => {
             ></SectionTitle>
             <CommonMenu
                 SectionImg={'offered'}
+                title={'offered'}
             ></CommonMenu>
 
             <SectionImg
@@ -36,6 +37,7 @@ const Menu = () => {
             ></SectionImg>
             <CommonMenu
                 SectionImg={'dessert'}
+                title={'dessert'}
             ></CommonMenu>
             <SectionImg
                 img={pizza}
@@ -44,6 +46,7 @@ const Menu = () => {
             ></SectionImg>
             <CommonMenu
                 SectionImg={'pizza'}
+                title={'pizza'}
             ></CommonMenu>
             <SectionImg
                 img={soup}
@@ -52,6 +55,7 @@ const Menu = () => {
             ></SectionImg>
             <CommonMenu
                 SectionImg={'soup'}
+                title={'soup'}
             ></CommonMenu>
             <SectionImg
                 img={salad}
@@ -60,6 +64,7 @@ const Menu = () => {
             ></SectionImg>
             <CommonMenu
                 SectionImg={'salad'}
+                title={'salad'}
             ></CommonMenu>
         </div>
     );

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import MenuItem from './MenuItem';
 import useMenu from '../../hooks/useMenu';
+import { Link } from 'react-router-dom';
 
-const CommonMenu = ({ SectionImg, button }) => {
+const CommonMenu = ({ SectionImg, button, title }) => {
 
     const [menu] = useMenu(SectionImg)
 
@@ -14,9 +15,11 @@ const CommonMenu = ({ SectionImg, button }) => {
                 }
             </div>
             <div className='flex justify-center mt-12'>
-                <button className="btn btn-outline border-0 border-b-2 hover:bg-transparent hover:text-black">
-                    {button ? button : 'ORDER YOUR FAVOURITE FOOD'}
-                </button>
+                <Link to={`/shop/${title}`}>
+                    <button className="btn btn-outline border-0 border-b-2 hover:bg-transparent hover:text-black">
+                        {button ? button : 'ORDER YOUR FAVOURITE FOOD'}
+                    </button>
+                </Link>
             </div>
         </div>
     );
