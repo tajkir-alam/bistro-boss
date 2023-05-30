@@ -5,7 +5,10 @@ import CommonBanner from '../../components/CommonBanner';
 import SectionTitle from '../../components/SectionTitle';
 import CommonMenu from '../../components/CommonMenu/CommonMenu';
 import SectionImg from './SectionImg';
-import desert from '../../assets/menu/dessert-bg.jpeg'
+import desert from '../../assets/menu/dessert-bg.jpeg';
+import soup from '../../assets/menu/soup-bg.jpg';
+import pizza from '../../assets/menu/pizza-bg.jpg';
+import salad from '../../assets/menu/salad-bg.jpg';
 
 const Menu = () => {
     return (
@@ -35,7 +38,7 @@ const Menu = () => {
                 SectionImg={'dessert'}
             ></CommonMenu>
             <SectionImg
-                img={desert}
+                img={pizza}
                 title={'pizza'}
                 subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
             ></SectionImg>
@@ -43,7 +46,7 @@ const Menu = () => {
                 SectionImg={'pizza'}
             ></CommonMenu>
             <SectionImg
-                img={desert}
+                img={soup}
                 title={'soup'}
                 subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
             ></SectionImg>
@@ -51,7 +54,7 @@ const Menu = () => {
                 SectionImg={'soup'}
             ></CommonMenu>
             <SectionImg
-                img={desert}
+                img={salad}
                 title={'salad'}
                 subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
             ></SectionImg>

@@ -2,11 +2,11 @@ import React from 'react';
 import Banner from '../Banner/Banner';
 import SectionTitle from '../../../components/SectionTitle';
 import Category from '../Category/Category';
-import FoodCards from '../../../components/FoodCards/FoodCards';
 import FeatureBanner from '../FeatureBanner/FeatureBanner';
 import Reviews from '../Reviews/Reviews';
 import { Helmet } from 'react-helmet-async';
 import CommonMenu from '../../../components/CommonMenu/CommonMenu';
+import RecommandationFood from '../RecommandationFood/RecommandationFood';
 
 const Home = () => {
     return (
@@ -43,9 +43,9 @@ const Home = () => {
                 subHeading={'Should Try'}
                 heading={'CHEF RECOMMENDS'}
             ></SectionTitle>
-            <FoodCards
+            <RecommandationFood
                 category={'offered'}
-            ></FoodCards>
+            ></RecommandationFood>
             <FeatureBanner></FeatureBanner>
             <SectionTitle
                 subHeading={'What Our Client Say'}

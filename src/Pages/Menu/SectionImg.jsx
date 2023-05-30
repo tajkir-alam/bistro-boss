@@ -1,8 +1,5 @@
 import React from 'react';
 import { Parallax, Background } from 'react-parallax';
-import soup from '../../assets/menu/soup-bg.jpg'
-import pizza from '../../assets/menu/pizza-bg.jpg'
-import salad from '../../assets/menu/salad-bg.jpg'
 
 const SectionImg = ({ img, title, subTitle }) => {
     return (
