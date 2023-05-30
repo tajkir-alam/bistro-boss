@@ -8,7 +8,8 @@ export default {
     extend: {
       backgroundImage: {
         'chef-service': "url('./src/assets/home/chef-service.jpg')",
-        'featured-img': "url('./src/assets/home/featured.jpg')"
+        'featured-img': "url('./src/assets/home/featured.jpg')",
+        'authentication-BgImg': "url('./src/assets/others/authentication.png')",
       },
     },
   },
