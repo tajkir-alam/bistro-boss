@@ -1,16 +1,48 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import sideImg from '../../assets/others/authentication2.png';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaGoogle, FaGithub } from "react-icons/fa";
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const Signup = () => {
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { emailSignup, googleLogin, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
 
+    const delayNavigate = () => {
+        navigate('/login')
+    }
+
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        console.log(data);
+        emailSignup(data.email, data.password, data.name)
+            .then(result => {
+                const user = result.user;
+                logOut();
+                navigate('/login');
+            })
+            .catch(error => {
+                // setError(error.message.split('(')[1].split(')')[0].split('/')[1])
+                console.log(error.message);
+            })
     };
+
+    const googleSignup = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                if (user) {
+                    setTimeout(delayNavigate, 2000);
+                    logOut();
+                    reset();
+                }
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
 
     return (
         <div className='bg-authentication-BgImg bg-center'>
@@ -19,7 +51,7 @@ const Signup = () => {
                     <div>
                         <h1 className="text-3xl font-bold text-center tracking-wide">Sign Up</h1>
 
-                        <form onSubmit={handleSubmit(onSubmit)}>    
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <label className="label">
                                 <span className="label-text font-semibold pl-1">Name</span>
                             </label>
@@ -35,6 +67,7 @@ const Signup = () => {
                             <input type="password" {...register("password")} placeholder="Enter Your Password" className="input input-bordered mb-5 w-full" />
                             {errors.password && <span>This field is required</span>}
 
+
                             <input type="submit" className='btn border-none w-full bg-[#D1A054]' />
                         </form>
 
@@ -43,7 +76,7 @@ const Signup = () => {
                             <h5 className='text-[#444444]'>Or sign up with</h5>
                             <div className='flex gap-4 justify-center items-center'>
                                 <FaFacebookF className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer hover:bg-[#444444] hover:text-white duration-500'></FaFacebookF>
-                                <FaGoogle className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer hover:bg-[#444444] hover:text-white duration-500'></FaGoogle>
+                                <FaGoogle onClick={googleSignup} className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer hover:bg-[#444444] hover:text-white duration-500'></FaGoogle>
                                 <FaGithub className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer hover:bg-[#444444] hover:text-white duration-500'></FaGithub>
                             </div>
                         </div>
