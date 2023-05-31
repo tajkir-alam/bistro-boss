@@ -4,8 +4,21 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Signup = () => {
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
 
     const { emailSignup, googleLogin, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -20,6 +33,10 @@ const Signup = () => {
         emailSignup(data.email, data.password, data.name)
             .then(result => {
                 const user = result.user;
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Signed in successfully'
+                })
                 logOut();
                 navigate('/login');
             })
@@ -35,6 +52,10 @@ const Signup = () => {
                 const user = result.user;
                 if (user) {
                     setTimeout(delayNavigate, 2000);
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Signed in successfully'
+                    })
                     logOut();
                     reset();
                 }

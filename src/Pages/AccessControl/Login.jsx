@@ -5,8 +5,21 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaGoogle, FaGithub } from "react-icons/fa";
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
 
     const navigate = useNavigate();
 
@@ -27,6 +40,10 @@ const Login = () => {
         emailLogin(data.email, data.password)
             .then(result => {
                 const user = result.user;
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Logged in successfully'
+                })
                 navigate(from, { replace: true });
                 reset();
             })
@@ -41,6 +58,10 @@ const Login = () => {
         googleLogin()
             .then(result => {
                 const user = result.user;
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Logged in successfully'
+                })
                 navigate(from, { replace: true });
                 setLoader(false);
             })
