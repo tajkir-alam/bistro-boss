@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import sideImg from '../../assets/others/authentication2.png';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaGoogle, FaGithub } from "react-icons/fa";
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const Login = () => {
+
+    const navigate = useNavigate();
+
+    const { emailLogin, googleLogin, loader, setLoader } = useContext(AuthContext);
+
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const [disable, setDisable] = useState(true);
 
@@ -14,15 +22,36 @@ const Login = () => {
     }, [])
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-
     const onSubmit = data => {
-        console.log(data)
+        console.log(data);
+        emailLogin(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                navigate(from, { replace: true });
+                reset();
+            })
+            .catch(error => {
+                // console.log(error.message)
+                setLoader(false);
+            })
     };
+
+    const googleSignup = () => {
+        setLoader(true);
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                navigate(from, { replace: true });
+                setLoader(false);
+            })
+            .catch((error) => {
+                // console.log(error.message);
+                setLoader(false);
+            })
+    }
 
     const handleCaptcha = e => {
         const user_captcha_value = e.target.value;
-
-        console.log(user_captcha_value);
         if (validateCaptcha(user_captcha_value) == true) {
             setDisable(false)
         }
@@ -67,7 +96,7 @@ const Login = () => {
                             <h5 className='text-[#444444]'>Or sign in with</h5>
                             <div className='flex gap-4 justify-center items-center'>
                                 <FaFacebookF className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer hover:bg-[#444444] hover:text-white duration-500'></FaFacebookF>
-                                <FaGoogle className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer hover:bg-[#444444] hover:text-white duration-500'></FaGoogle>
+                                <FaGoogle onClick={googleSignup} className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer hover:bg-[#444444] hover:text-white duration-500'></FaGoogle>
                                 <FaGithub className='text-2xl text-[#444444] border-2 border-[#444444] rounded-full w-10 h-10 p-2 cursor-pointer hover:bg-[#444444] hover:text-white duration-500'></FaGithub>
                             </div>
                         </div>
