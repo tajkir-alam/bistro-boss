@@ -61,7 +61,7 @@ const MyCart = () => {
 
                 {/* Table start */}
                 <div className="overflow-x-auto mt-8">
-                    <table className="table">
+                    <table className="table w-full">
                         {/* head */}
                         <thead>
                             <tr>
@@ -84,8 +84,8 @@ const MyCart = () => {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td className='w-1/2'>{item.name}</td>
-                                        <td className='w-1/2'>${item.price}</td>
+                                        <td >{item.name}</td>
+                                        <td >${item.price}</td>
                                         <th>
                                             <button onClick={() => handleDelete(item._id)} className="btn btn-ghost text-2xl text-white hover:text-black duration-500 bg-[#B91C1C]"><FaRegTrashAlt /></button>
                                         </th>
