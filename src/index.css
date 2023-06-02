@@ -7,3 +7,8 @@
         @apply mx-2 mt-2 lg:w-4/5 lg:mx-auto
     }
 }
+
+.active {
+    color: white;
+    background: none;
+}

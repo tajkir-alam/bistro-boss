@@ -1,22 +1,42 @@
 import React from 'react';
-import DashboardHome from '../Pages/DashboardHome/DashboardHome/DashboardHome';
+import { NavLink, Outlet } from 'react-router-dom';
+import { FaHome, FaCalendarAlt, FaWallet, FaShoppingCart, FaGrinStars, FaCalendarCheck, FaAlignJustify, FaShoppingBag, FaEnvelope } from "react-icons/fa";
 
 const DashBoard = () => {
     return (
-        <div className="drawer lg:drawer-open">
+        <div className="drawer drawer-mobile">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
                 {/* Page content here */}
+                <Outlet></Outlet>
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                <div className="menu p-4 w-80 h-full bg-[#D1A054] text-base-content">
                     {/* Sidebar content here */}
-                    <li><a>Sidebar Item 1</a></li>
-                    <li><a>Sidebar Item 2</a></li>
-                </ul>
+                    <h2 className='uppercase font-semibold text-2xl ml-4'>
+                        <span className="font-bold">Bistro Boss</span>
+                        <br />
+                        restaurant
+                    </h2>
+                    <ul>
+                        <li className='uppercase'><NavLink className='font-semibold' to={'/dashboard/'}><FaHome />User home</NavLink></li>
+                        <li className='uppercase'><NavLink className='font-semibold' to={'reservation'}><FaCalendarAlt />reservation</NavLink></li>
+                        <li className='uppercase'><NavLink className='font-semibold' to={'payment'}><FaWallet />payment history</NavLink></li>
+                        <li className='uppercase'><NavLink className='font-semibold' to={'cart'}><FaShoppingCart />my cart</NavLink></li>
+                        <li className='uppercase'><NavLink className='font-semibold' to={'review'}><FaGrinStars />add review</NavLink></li>
+                        <li className='uppercase'><NavLink className='font-semibold' to={'booking'}><FaCalendarCheck />my booking</NavLink></li>
+                    </ul>
+                    <div className="divider"></div>
+                    <ul>
+                    <li className='uppercase'><NavLink className='font-semibold' to={'/'}><FaHome />hom</NavLink></li>
+                    <li className='uppercase'><NavLink className='font-semibold' to={'/menu'}><FaAlignJustify />menu</NavLink></li>
+                    <li className='uppercase'><NavLink className='font-semibold' to={'/shop/salad'}><FaShoppingBag />Shop</NavLink></li>
+                    <li className='uppercase'><NavLink className='font-semibold' to={'/contact'}><FaEnvelope />contact</NavLink></li>
+                    </ul>
+                </div>
 
             </div>
         </div>
