@@ -41,7 +41,7 @@ async function run() {
             const result = await cursor.toArray();
             res.send(result)
         })
-        
+
         app.get('/reviews', async (req, res) => {
             const cursor = reviewsCollection.find();
             const result = await cursor.toArray();
@@ -50,6 +50,17 @@ async function run() {
 
 
         // ------ CART Section ------
+        app.get('/cart', async (req, res) => {
+            const email = req.query.email;
+            if (!email) {
+                res.send([])
+            }
+            const query = { email: email };
+            const cursor = cartCollection.find(query);
+            const result = await cursor.toArray();
+            res.send(result);
+        })
+
         app.post('/cart', async (req, res) => {
             const item = req.body
             const result = await cartCollection.insertOne(item);

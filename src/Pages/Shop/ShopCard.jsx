@@ -2,16 +2,18 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useCart from '../../hooks/useCart';
 
 const ShopCard = ({ item }) => {
     const { image, name, recipe, price, category, _id } = item;
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [, refetch] = useCart()
 
     const Toast = Swal.mixin({
         toast: true,
-        position: 'top-end',
+        position: 'top-middle',
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
@@ -34,6 +36,7 @@ const ShopCard = ({ item }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
+                        refetch();
                         Toast.fire({
                             icon: 'success',
                             title: 'Successfully added'
