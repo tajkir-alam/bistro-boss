@@ -29,14 +29,26 @@ const Signup = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
-        // console.log(data);
         emailSignup(data.email, data.password, data.name)
             .then(result => {
                 const user = result.user;
-                Toast.fire({
-                    icon: 'success',
-                    title: 'Signed in successfully'
-                })
+                const userName = { name: data.name, email: data.email };
+                if (user) {
+                    fetch('http://localhost:5000/users', {
+                        method: "POST",
+                        headers: {
+                            'content-type': 'application/json',
+                        },
+                        body: JSON.stringify(userName)
+                    })
+                        .then(res => res.json())
+                        .then(() => {
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Signed in successfully'
+                            })
+                        })
+                }
                 logOut();
                 navigate('/login');
             })
@@ -52,10 +64,21 @@ const Signup = () => {
                 const user = result.user;
                 if (user) {
                     setTimeout(delayNavigate, 2000);
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Signed in successfully'
+                    const userName = { name: user.displayName, email: user.email };
+                    fetch('http://localhost:5000/users', {
+                        method: "POST",
+                        headers: {
+                            'content-type': 'application/json',
+                        },
+                        body: JSON.stringify(userName)
                     })
+                        .then(res => res.json())
+                        .then(() => {
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Signed in successfully'
+                            })
+                        })
                     logOut();
                     reset();
                 }
@@ -76,7 +99,7 @@ const Signup = () => {
                             <label className="label">
                                 <span className="label-text font-semibold pl-1">Name</span>
                             </label>
-                            <input type="text" {...register("name")} placeholder="Enter Your Name" className="input input-bordered mb-5 w-full" />
+                            <input type="text" {...register("name", { required: true })} placeholder="Enter Your Name" className="input input-bordered mb-5 w-full" />
                             <label className="label">
                                 <span className="label-text font-semibold pl-1">Email</span>
                             </label>
@@ -85,7 +108,7 @@ const Signup = () => {
                             <label className="label">
                                 <span className="label-text font-semibold pl-1">Password</span>
                             </label>
-                            <input type="password" {...register("password")} placeholder="Enter Your Password" className="input input-bordered mb-5 w-full" />
+                            <input type="password" {...register("password", { required: true })} placeholder="Enter Your Password" className="input input-bordered mb-5 w-full" />
                             {errors.password && <span>This field is required</span>}
 
 
