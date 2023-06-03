@@ -57,15 +57,17 @@ const Login = () => {
         googleLogin()
             .then(result => {
                 const user = result.user;
-                Toast.fire({
-                    icon: 'success',
-                    title: 'Logged in successfully'
-                })
-                navigate(from, { replace: true });
+                if (user) {
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Logged in successfully'
+                    })
+                    navigate(from, { replace: true });
+                }
                 setLoader(false);
             })
             .catch((error) => {
-                // console.log(error.message);
+                console.log(error.message);
                 setLoader(false);
             })
     }

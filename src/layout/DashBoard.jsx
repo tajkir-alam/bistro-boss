@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import { FaHome, FaCalendarAlt, FaWallet, FaShoppingCart, FaGrinStars, FaCalendarCheck, FaAlignJustify, FaShoppingBag, FaEnvelope } from "react-icons/fa";
 
 const DashBoard = () => {
@@ -9,18 +9,18 @@ const DashBoard = () => {
             <div className="drawer-content bg-[#F6F6F6]">
                 {/* Page content here */}
                 <Outlet></Outlet>
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden absolute left-2 top-2"><FaAlignJustify></FaAlignJustify></label>
 
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <div className="menu p-4 w-80 h-full bg-[#D1A054] text-base-content">
                     {/* Sidebar content here */}
-                    <h2 className='uppercase font-semibold text-2xl ml-4 mb-6'>
+                    <Link to={'/'} className='uppercase font-semibold text-2xl ml-4 mb-6'>
                         <span className="font-bold">Bistro Boss</span>
                         <br />
                         restaurant
-                    </h2>
+                    </Link>
                     <div className='divide-y-2 space-y-8'>
                         <ul>
                             <li className='uppercase'><NavLink className='font-semibold' to={'/dashboard/'}><FaHome />User home</NavLink></li>

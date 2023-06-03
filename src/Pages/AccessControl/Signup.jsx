@@ -29,7 +29,7 @@ const Signup = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data);
+        // console.log(data);
         emailSignup(data.email, data.password, data.name)
             .then(result => {
                 const user = result.user;
