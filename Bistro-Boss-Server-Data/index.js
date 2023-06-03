@@ -8,7 +8,7 @@ const port = process.env.PORT || 5000;
 const corsConfig = {
     origin: '*',
     Credential: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
 }
 app.use(cors(corsConfig));
 app.use(express.json());
@@ -58,6 +58,18 @@ async function run() {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
             const result = await userCollection.deleteOne(query);
+            res.send(result);
+        })
+
+        app.patch('/users/admin/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: new ObjectId(id) };
+            const updateUserRole = {
+                $set: {
+                    role: 'admin'
+                },
+            };
+            const result = await userCollection.updateOne(filter, updateUserRole);
             res.send(result);
         })
 

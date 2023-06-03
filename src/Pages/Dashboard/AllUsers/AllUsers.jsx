@@ -10,6 +10,36 @@ const AllUsers = () => {
         return res.json();
     })
 
+    const handleMakeAdmin = (user) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Make Admin!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/users/admin/${user._id}`, {
+                    method: 'PATCH'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.modifiedCount) {
+                            refetch();
+                            Swal.fire(
+                                `${user.name}`,
+                                'is admin now.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+    }
+
     const handleDelete = (id) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -72,7 +102,9 @@ const AllUsers = () => {
                                         <td >{user.name}</td>
                                         <td >{user.email}</td>
                                         <td>
-                                            <button onClick={() => handleMakeAdmin(user._id)} className="btn btn-ghost text-2xl text-white hover:text-black duration-500 bg-[#D1A054]"><FaUsers /></button>
+                                            {user.role === 'admin' ? 'admin' :
+                                                <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost text-2xl text-white hover:text-black duration-500 bg-[#D1A054]"><FaUsers /></button>
+                                            }
                                         </td>
                                         <td>
                                             <button onClick={() => handleDelete(user._id)} className="btn btn-ghost text-2xl text-white hover:text-black duration-500 bg-[#B91C1C]"><FaRegTrashAlt /></button>
