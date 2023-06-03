@@ -1,10 +1,11 @@
 const express = require('express');
 require('dotenv').config()
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Middlewar
+// Middleware
 const corsConfig = {
     origin: '*',
     Credential: true,
@@ -36,6 +37,14 @@ async function run() {
         const menuCollection = client.db("bistroBossDB").collection("menu");
         const reviewsCollection = client.db("bistroBossDB").collection("reviews");
         const cartCollection = client.db("bistroBossDB").collection("cart");
+
+        // JWT Token
+        app.post('/jwt', (req, res) => {
+            const user = req.body;
+            const token = jwt.sign(user, process.env.ACCESS_TOKEN, { expiresIn: '1h' });
+            res.send({ token });
+        })
+
 
         // ------ User Section ------
         app.get('/users', async (req, res) => {
