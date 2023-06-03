@@ -16,9 +16,11 @@ const Navbar = () => {
         <li>
             <Link className='uppercase' to={'/contact'}>contact us</Link>
         </li>
-        <li>
-            <Link className='uppercase' to={'/dashboard/'}>dash board</Link>
-        </li>
+        {user &&
+            <li>
+                <Link className='uppercase' to={'/dashboard/'}>dash board</Link>
+            </li>
+        }
         <li>
             <Link className='uppercase' to={'/menu'}>Our menu</Link>
         </li>

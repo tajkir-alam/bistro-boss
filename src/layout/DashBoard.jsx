@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
-import { FaHome, FaCalendarAlt, FaWallet, FaShoppingCart, FaGrinStars, FaCalendarCheck, FaAlignJustify, FaShoppingBag, FaEnvelope } from "react-icons/fa";
+import { FaHome, FaCalendarAlt, FaWallet, FaShoppingCart, FaGrinStars, FaCalendarCheck, FaAlignJustify, FaShoppingBag, FaEnvelope, FaUtensils, FaListUl, FaBook, FaUsers } from "react-icons/fa";
 
 const DashBoard = () => {
+    const isAdmin = true;
+
     return (
         <div className="drawer drawer-mobile">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -22,14 +24,24 @@ const DashBoard = () => {
                         restaurant
                     </Link>
                     <div className='divide-y-2 space-y-8'>
-                        <ul>
-                            <li className='uppercase'><NavLink className='font-semibold' to={'/dashboard/'}><FaHome />User home</NavLink></li>
-                            <li className='uppercase'><NavLink className='font-semibold' to={'reservation'}><FaCalendarAlt />reservation</NavLink></li>
-                            <li className='uppercase'><NavLink className='font-semibold' to={'payment'}><FaWallet />payment history</NavLink></li>
-                            <li className='uppercase'><NavLink className='font-semibold' to={'cart'}><FaShoppingCart />my cart</NavLink></li>
-                            <li className='uppercase'><NavLink className='font-semibold' to={'review'}><FaGrinStars />add review</NavLink></li>
-                            <li className='uppercase'><NavLink className='font-semibold' to={'booking'}><FaCalendarCheck />my booking</NavLink></li>
-                        </ul>
+                        {isAdmin ?
+                            <ul>
+                                <li className='uppercase'><NavLink className='font-semibold' to={'/dashboard/'}><FaHome />Admin home</NavLink></li>
+                                <li className='uppercase'><NavLink className='font-semibold' to={'add-items'}><FaUtensils />Add items</NavLink></li>
+                                <li className='uppercase'><NavLink className='font-semibold' to={'manage-items'}><FaListUl />manage items</NavLink></li>
+                                <li className='uppercase'><NavLink className='font-semibold' to={'bookings'}><FaBook />manage bookings</NavLink></li>
+                                <li className='uppercase'><NavLink className='font-semibold' to={'allusers'}><FaUsers />all users</NavLink></li>
+                            </ul>
+                            :
+                            <ul>
+                                <li className='uppercase'><NavLink className='font-semibold' to={'/dashboard/'}><FaHome />User home</NavLink></li>
+                                <li className='uppercase'><NavLink className='font-semibold' to={'reservation'}><FaCalendarAlt />reservation</NavLink></li>
+                                <li className='uppercase'><NavLink className='font-semibold' to={'payment'}><FaWallet />payment history</NavLink></li>
+                                <li className='uppercase'><NavLink className='font-semibold' to={'cart'}><FaShoppingCart />my cart</NavLink></li>
+                                <li className='uppercase'><NavLink className='font-semibold' to={'review'}><FaGrinStars />add review</NavLink></li>
+                                <li className='uppercase'><NavLink className='font-semibold' to={'booking'}><FaCalendarCheck />my booking</NavLink></li>
+                            </ul>
+                        }
                         <ul>
                             <li className='uppercase'><NavLink className='font-semibold' to={'/'}><FaHome />hom</NavLink></li>
                             <li className='uppercase'><NavLink className='font-semibold' to={'/menu'}><FaAlignJustify />menu</NavLink></li>

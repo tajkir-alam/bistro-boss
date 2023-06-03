@@ -6,9 +6,10 @@ import Shop from "../Pages/Shop/Shop";
 import Login from "../Pages/AccessControl/Login";
 import Signup from "../Pages/AccessControl/Signup";
 import DashBoard from "../layout/DashBoard";
-import UserHome from "../Pages/Dashboard/UserDashboard/UserHome/UserHome";
-import MyCart from "../Pages/Dashboard/UserDashboard/MyCart/MyCart";
 import PrivateRoute from "./PrivateRoute";
+import UserHome from "../Pages/Dashboard/UserHome/UserHome";
+import MyCart from "../Pages/Dashboard/MyCart/MyCart";
+import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
             {
                 path: 'cart',
                 element: <MyCart></MyCart>
+            },
+            {
+                path: 'allusers',
+                element: <AllUsers></AllUsers>
             }
         ]
     },

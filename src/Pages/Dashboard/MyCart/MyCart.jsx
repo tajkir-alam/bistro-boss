@@ -1,8 +1,8 @@
 import React from 'react';
-import SectionTitle from '../../../../components/SectionTitle';
-import useCart from '../../../../hooks/useCart';
 import { FaRegTrashAlt } from "react-icons/fa";
 import Swal from 'sweetalert2';
+import SectionTitle from '../../../components/SectionTitle';
+import useCart from '../../../hooks/useCart';
 
 const MyCart = () => {
 
@@ -30,7 +30,7 @@ const MyCart = () => {
                             refetch();
                             Swal.fire(
                                 'Deleted!',
-                                'Your file has been deleted.',
+                                'Your item has been deleted.',
                                 'success'
                             )
                         }
