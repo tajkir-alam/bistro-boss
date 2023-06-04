@@ -62,9 +62,20 @@ async function run() {
             res.send({ token });
         })
 
+        // JWT middleware
+        const verifyAdmin = async (req, res, next) => {
+            const email = req.decoded.email;
+            const query = { email: email };
+            const user = await userCollection.findOne(query);
+            if(user?.role !== 'admin'){
+                console.log(user?.role);
+                return res.status(403).status({error: true, message: 'Forbidden unauthorize access'});
+            }
+            next();
+        }
 
         // ------ User Section ------
-        app.get('/users', async (req, res) => {
+        app.get('/users', verifyJWT, verifyAdmin, async (req, res) => {
             const result = await userCollection.find().toArray();
             res.send(result)
         })
@@ -95,8 +106,8 @@ async function run() {
             };
             const query = { email: email };
             const user = await userCollection.findOne(query);
-            const result = {admin: user?.role === 'admin'};
-            res.send(result);  
+            const result = { admin: user?.role === 'admin' };
+            res.send(result);
         })
 
         app.patch('/users/admin/:id', async (req, res) => {

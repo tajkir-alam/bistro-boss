@@ -53,7 +53,7 @@ const Login = () => {
     };
 
     const googleSignup = () => {
-        setLoader(true);
+        // setLoader(true);
         googleLogin()
             .then(result => {
                 const user = result.user;
@@ -63,11 +63,12 @@ const Login = () => {
                         title: 'Logged in successfully'
                     })
                     navigate(from, { replace: true });
+                    reset();
                 }
                 setLoader(false);
             })
             .catch((error) => {
-                console.log(error.message);
+                // console.log(error.message);
                 setLoader(false);
             })
     }
