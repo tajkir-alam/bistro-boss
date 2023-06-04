@@ -29,6 +29,7 @@ const AddItem = () => {
                     axiosSecure.post('/menu', data)
                         .then(data => {
                             if (data.data.insertedId) {
+                                reset();
                                 Swal.fire({
                                     position: 'top-end',
                                     icon: 'success',
