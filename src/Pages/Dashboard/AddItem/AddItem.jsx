@@ -12,7 +12,6 @@ const AddItem = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data);
         const formData = new FormData();
         formData.append('image', data.image[0])
 
@@ -29,7 +28,6 @@ const AddItem = () => {
 
                     axiosSecure.post('/menu', data)
                         .then(data => {
-                            console.log(data.data);
                             if (data.data.insertedId) {
                                 Swal.fire({
                                     position: 'top-end',
