@@ -2,8 +2,11 @@ import React from 'react';
 import SectionTitle from '../../../components/SectionTitle';
 import { FaUtensils } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const AddItem = () => {
+    const [axiosSecure] = useAxiosSecure()
     const img_hosting_token = import.meta.env.VITE_PRODUCT_IMAGE_TOKEN;
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
 
@@ -17,15 +20,28 @@ const AddItem = () => {
             method: 'POST',
             body: formData
         })
-        .then(res => res.json())
-        .then(imgRes => {
-            if(imgRes.success){
-                const imgURL = imgRes.data.display_url;
-                data.image = imgURL;
-                data.price = parseFloat(data.price)
-                console.log(data);
-            }
-        })
+            .then(res => res.json())
+            .then(imgRes => {
+                if (imgRes.success) {
+                    const imgURL = imgRes.data.display_url;
+                    data.image = imgURL;
+                    data.price = parseFloat(data.price)
+
+                    axiosSecure.post('/menu', data)
+                        .then(data => {
+                            console.log(data.data);
+                            if (data.data.insertedId) {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Your item has been added',
+                                    showConfirmButton: false,
+                                    timer: 1000
+                                })
+                            }
+                        })
+                }
+            })
     };
 
     return (
