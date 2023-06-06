@@ -34,7 +34,7 @@ const Signup = () => {
                 const user = result.user;
                 const userName = { name: data.name, email: data.email };
                 if (user) {
-                    fetch('http://localhost:5000/users', {
+                    fetch('https://bistro-boss-server-data.vercel.app/users', {
                         method: "POST",
                         headers: {
                             'content-type': 'application/json',
@@ -65,7 +65,7 @@ const Signup = () => {
                 if (user) {
                     setTimeout(delayNavigate, 2000);
                     const userName = { name: user.displayName, email: user.email };
-                    fetch('http://localhost:5000/users', {
+                    fetch('https://bistro-boss-server-data.vercel.app/users', {
                         method: "POST",
                         headers: {
                             'content-type': 'application/json',
