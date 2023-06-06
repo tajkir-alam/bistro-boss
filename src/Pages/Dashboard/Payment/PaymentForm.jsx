@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const PaymentForm = ({ cart, price }) => {
     const stripe = useStripe();
@@ -13,6 +14,7 @@ const PaymentForm = ({ cart, price }) => {
     const { user } = useContext(AuthContext);
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
+    const navigate = useNavigate('');
 
     useEffect(() => {
         if (price > 0) {
@@ -73,13 +75,16 @@ const PaymentForm = ({ cart, price }) => {
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 price,
+                date: new Date(),
                 quantity: cart.length,
-                items: cart.map(item => item._id),
-                itemNames: cart.map(item => item.name)
+                cartsItems: cart.map(item => item._id),
+                menuItems: cart.map(item => item.foodId),
+                itemNames: cart.map(item => item.name),
+                status: 'pending', 
             }
             axiosSecure.post('/payment', payment)
                 .then(res => {
-                    if (res.data.insertedId) {
+                    if (res.data.insertResult.insertedId) {
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
@@ -87,6 +92,7 @@ const PaymentForm = ({ cart, price }) => {
                             showConfirmButton: false,
                             timer: 1500
                         })
+                        navigate('/')
                     }
                 })
         }

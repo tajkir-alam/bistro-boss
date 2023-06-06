@@ -7,13 +7,14 @@ import Login from "../Pages/AccessControl/Login";
 import Signup from "../Pages/AccessControl/Signup";
 import DashBoard from "../layout/DashBoard";
 import PrivateRoute from "./PrivateRoute";
-import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import MyCart from "../Pages/Dashboard/MyCart/MyCart";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AdminRoute from "./AdminRoute";
 import AddItem from "../Pages/Dashboard/AddItem/AddItem";
 import ManageItems from "../Pages/Dashboard/ManageItems/ManageItems";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import UserHome from "../Pages/Dashboard/Home/UserHome/UserHome";
+import AdminHome from "../Pages/Dashboard/Home/AdminHome/AdminHome";
 
 const router = createBrowserRouter([
     {
@@ -46,11 +47,11 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
         children: [
-            {
-                path: '',
-                element: <UserHome></UserHome>
-            },
             // For Admin route
+            {
+                path: 'admin',
+                element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+            },
             {
                 path: 'allusers',
                 element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
                 element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
             },
             // For Users Route
+            {
+                path: 'user',
+                element: <UserHome></UserHome>
+            },
             {
                 path: 'cart',
                 element: <MyCart></MyCart>

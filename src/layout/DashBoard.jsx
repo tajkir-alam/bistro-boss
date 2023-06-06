@@ -27,7 +27,7 @@ const DashBoard = () => {
                     <div className='divide-y-2 space-y-8'>
                         {isAdmin ?
                             <ul>
-                                <li className='uppercase'><NavLink className='font-semibold' to={'/dashboard/'}><FaHome />Admin home</NavLink></li>
+                                <li className='uppercase'><NavLink className='font-semibold' to={'/dashboard/admin'}><FaHome />Admin home</NavLink></li>
                                 <li className='uppercase'><NavLink className='font-semibold' to={'add-items'}><FaUtensils />Add items</NavLink></li>
                                 <li className='uppercase'><NavLink className='font-semibold' to={'manage-items'}><FaListUl />manage items</NavLink></li>
                                 <li className='uppercase'><NavLink className='font-semibold' to={'bookings'}><FaBook />manage bookings</NavLink></li>
@@ -35,7 +35,7 @@ const DashBoard = () => {
                             </ul>
                             :
                             <ul>
-                                <li className='uppercase'><NavLink className='font-semibold' to={'/dashboard/'}><FaHome />User home</NavLink></li>
+                                <li className='uppercase'><NavLink className='font-semibold' to={'/dashboard/user'}><FaHome />User home</NavLink></li>
                                 <li className='uppercase'><NavLink className='font-semibold' to={'reservation'}><FaCalendarAlt />reservation</NavLink></li>
                                 <li className='uppercase'><NavLink className='font-semibold' to={'payment'}><FaWallet />payment history</NavLink></li>
                                 <li className='uppercase'><NavLink className='font-semibold' to={'cart'}><FaShoppingCart />my cart</NavLink></li>

@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import profilePic from '../../../assets/others/profile.png'
 import useCart from '../../../hooks/useCart';
+import useAdmin from '../../../hooks/userAdmin';
 
 const Navbar = () => {
 
     const { user, logOut, loader, setLoader } = useContext(AuthContext);
     const [cart] = useCart();
+    const [isAdmin] = useAdmin();
 
     const navItems = <>
         <li>
@@ -18,7 +20,7 @@ const Navbar = () => {
         </li>
         {user &&
             <li>
-                <Link className='uppercase' to={'/dashboard/'}>dash board</Link>
+                <Link className='uppercase' to={!isAdmin ? '/dashboard/user' : '/dashboard/admin'}>dashboard</Link>
             </li>
         }
         <li>
