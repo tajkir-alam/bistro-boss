@@ -1,11 +1,25 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
-const PaymentForm = () => {
-
+const PaymentForm = ({ price }) => {
     const stripe = useStripe();
     const elements = useElements();
+    const [axiosSecure] = useAxiosSecure()
     const [cardError, setCardError] = useState('');
+    const [clientSecret, setClientSecret] = useState('');
+    const { user } = useContext(AuthContext);
+
+    useEffect(() => {
+        if (price > 0) {
+            axiosSecure.post('/create-payment-intent', { price })
+                .then(data => {
+                    // console.log(data.data.clientSecret);
+                    setClientSecret(data.data.clientSecret)
+                })
+        }
+    }, [price])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,8 +43,22 @@ const PaymentForm = () => {
             setCardError(error.message);
         }
         else {
+            setCardError('')
             console.log(paymentMethod);
         }
+
+        const { paymentIntent, error: confirmError } = stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: card,
+                billing_details: {
+                    email: user?.email || 'anonymous user',
+                    name: user?.displayName || 'anonymous user',
+                },
+            },
+        })
+            .then(function (result) {
+                // Handle result.error or result.paymentIntent
+            });
 
     }
 
@@ -57,7 +85,7 @@ const PaymentForm = () => {
                 />
                 <p className='text-red-600 text-lg ml-2'>{cardError}</p>
                 <div className='w-1/2 mx-auto text-center'>
-                    <button type="submit" disabled={!stripe} className='btn btn-primary w-full'>
+                    <button type="submit" disabled={!stripe || !clientSecret} className='btn btn-primary w-full'>
                         Pay
                     </button>
                 </div>
