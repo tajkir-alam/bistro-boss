@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { AuthContext } from '../../../../Providers/AuthProvider';
 import { FaTruckMoving, FaUserTie, FaUsers, FaWallet } from 'react-icons/fa';
+import BarChartComponents from './BarChartComponents';
 
 const AdminHome = () => {
     const { user } = useContext(AuthContext);
@@ -56,6 +57,15 @@ const AdminHome = () => {
                         <p className='text-2xl'>{stats?.orders}</p>
                         <p className='uppercase text-2xl font-light'>orders</p>
                     </div>
+                </div>
+            </div>
+
+            <div className='grid md:grid-cols-2 gap-5'>
+                <div>
+                    <BarChartComponents revenue={stats?.revenue} customers={stats?.customers} products={stats?.products} orders={stats?.orders}></BarChartComponents>
+                </div>
+                <div>
+
                 </div>
             </div>
         </div>
