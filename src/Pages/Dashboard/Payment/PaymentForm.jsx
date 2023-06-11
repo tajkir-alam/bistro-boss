@@ -103,7 +103,7 @@ const PaymentForm = ({ cart, price }) => {
         <div className='custom-container h-screen mt-[50%] lg:mt-[25%]'>
             <h1 className='text-5xl text-center m-0 p-0'>PAYMENT</h1>
             <form onSubmit={handleSubmit} className='mt-8 form space-y-5'>
-                <CardElement
+                <CardElement    
                     options={{
                         style: {
                             base: {

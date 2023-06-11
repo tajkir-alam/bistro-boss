@@ -12,6 +12,7 @@ const DashBoard = () => {
             <div className="drawer-content bg-[#F6F6F6]">
                 {/* Page content here */}
                 <Outlet></Outlet>
+                
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden absolute left-2 top-2"><FaAlignJustify></FaAlignJustify></label>
 
             </div>
